@@ -1,5 +1,9 @@
 # msby
 
+# This is an old website I wrote 3 years ago that I'm updating in 2026. Sorry if it sucks!
+
+
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
