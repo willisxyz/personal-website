@@ -1,6 +1,6 @@
-# msby
+# msby.xyz
 
-# This is an old website I wrote 3 years ago that I'm updating in 2026. Sorry if it sucks!
+## This is an old website I wrote 3 years ago that I'm updating in 2026. Sorry if it sucks!
 
 
 
