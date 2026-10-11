@@ -4,6 +4,7 @@ import { ref, onMounted, onBeforeUnmount } from 'vue';
 const show = ref(null);
 const showP = ref(null);
 const showP2 = ref(null);
+const showP3 = ref(null);
 const neet = new Date(2023, 1, 27, 20, 38, 0, 0);
 const imagehover = ref(false);
 const timesince = ref(calculateTime());
@@ -47,6 +48,9 @@ function handleKeyPress(event) {
   if (showP2.value){
   	showP2.value = false;
   }
+  if (showP3.value){
+  	showP3.value = false;
+  }
   else{
     closeSection();
   }
@@ -67,6 +71,9 @@ function handleClickOutside(event){
 	}
 	if(showP2.value){
 		showP2.value=false;
+	}
+	if(showP3.value){
+		showP3.value=false;
 	}
 	else{
 		closeSection();
@@ -103,22 +110,32 @@ onBeforeUnmount(() => {
 		<div v-if="show==='A'">
 			<div class = projects>
 				<div class = "mouse">
-					<button class = "close" @click="show = 'F'">close</button>
-					<button class = "btn" @click = "showP2 = !showP2">Assessments</button>
+					<button class = "btn" @click = "showP = !showP">UM Assessments</button>
 					<transition name = "fade">
-						<div v-show="showP2" class = "Assessments">
+						<div v-show="showP" class = "Assessments">
 							<p>
-							Report created for Integral Care's Utilization Management team to 
-							audit internal team metrics.</p>
+							Screenshots coming soon pending internal approval. <br><br>
+							PowerBI report created to audit staff timeliness, form errors, and other metrics
+							by utilization management team.
+							</p>
 						</div>
 					</transition>
 				</div>
 				<div class = "think">
+					<button class = "btn" @click = "showP2 = !showP2">Batch Details Report</button>
+					<transition name = "fade">
+						<div v-show="showP2" class = "Assessments">
+							<p>Screenshots coming soon pending internal approval. <br><br>
+							Crystal Reports report used by management services team to retrieve
+							organized batch details for export.
+							</p>
+						</div>
+					</transition>
 				</div>
 				<div class = "serveP">
-					<button class = "btn" @click="showP = !showP">Servetrack</button>
+					<button class = "btn" @click="showP3 = !shodP3">Servetrack</button>
 					<transition name = "fade">
-						<div v-show="showP" class = "servetrack">
+						<div v-show="showP3" class = "servetrack">
 							<button class = "close" @click="showP = false">close</button>
 							<p>
 							<img src = "./assets/track78.gif" class = "servetrackgif">
