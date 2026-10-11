@@ -45,10 +45,10 @@ function handleKeyPress(event) {
   if (showP.value){
 	showP.value = false;
   } 
-  if (showP2.value){
+  else if (showP2.value){
   	showP2.value = false;
   }
-  if (showP3.value){
+  else if (showP3.value){
   	showP3.value = false;
   }
   else{
@@ -69,10 +69,10 @@ function handleClickOutside(event){
 	if(showP.value){
 	showP.value= false;
 	}
-	if(showP2.value){
+	else if(showP2.value){
 		showP2.value=false;
 	}
-	if(showP3.value){
+	else if(showP3.value){
 		showP3.value=false;
 	}
 	else{
@@ -155,13 +155,12 @@ onBeforeUnmount(() => {
 	</div>
 	<div v-else-if="show==='B'" style="height:0px;">
 		<div class = "resume">	
-			<iframe src="https://drive.google.com/file/d/1dUJQzeNgU5WpXHxY6OBlNsLVuJk-38Tn/preview" 
-				width="550" 
-				height="600"
-				style="border:2px solid grey;">
-			</iframe>
+			<iframe src="https://docs.google.com/document/d/e/2PACX-1vSGEWk4qb5FHlKd32V_4qNmbU7_Q3-FMPKQgH0z_HrZH-cBlLqjfo-Br6vZmaymho04N6Fwqrbu1mZA/pub?embedded=true"
+				width="100%"
+				frameBorder="0"
+				></iframe>
 			<button class = "close" 
-					style="left: -480px;
+					style="left: -740px;
 						   top: 5px;"
 					@click="show = 'F'">close</button>
 		</div>
@@ -251,7 +250,7 @@ onBeforeUnmount(() => {
 	left: 0;
 	right: 0;
 	margin-left: auto;
-	max-width: 820px;
+	max-width: 850px;
 	margin-right: auto;
 	display: flex;
 }
@@ -339,14 +338,16 @@ onBeforeUnmount(() => {
 }
 .resume {
 	z-index: 3;
-	top:30px;
+	top:40px;
 	display: flex;
 	position: relative;
 	margin: auto;
 	justify-content: center;
 	overflow: hidden;
-	width: 600px;
-	height: 803px; 
+	width: 800px;
+	height: 935px; 
+	background: rgb(255, 245, 230, 1);
+	border: 2px solid grey;
 }
 .projects {
 	text-align: center;
@@ -384,7 +385,7 @@ onBeforeUnmount(() => {
 	justify-content: center;
 	align-items:center;
 	transform:translate(-50%, -50%);
-	top:52%;
+	top:42%;
 	left:50%;
 	position: fixed;
 	width: 600px;
@@ -392,23 +393,8 @@ onBeforeUnmount(() => {
 	border: 2px solid grey;
 	background: rgb(255,245,230,1);
 }
-.Poopah{
-	z-index: 3;
-	display: flex;
-	font-family: Roboto;
-	justify-content: center;
-	align-items:center;
-	transform:translate(-50%, -50%);
-	top:52%;
-	left:50%;
-	position: fixed;
-	width: 400px;
-	height: 400px;
-	border: 2px solid grey;
-	background: rgb(255,245,230,1);
-}
 .servetrack{
-	z-index: 2;
+	z-index: 3;
 	display: flex;
 	font-family: Roboto;
 	justify-content: center;
