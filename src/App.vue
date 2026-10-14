@@ -72,6 +72,7 @@ onBeforeUnmount(() => {
 					<transition name = "fade">
 					<span v-if="showP==='A1'"> 
 						<div class = "Assessments">
+							<button class = "close" @click="showP = false">close</button>
 							<p>
 							<img src = "./assets/pbi_1.png" class = "servetrackgif">
 							<img src = "./assets/pbi_2.png" class = "servetrackgif">
@@ -87,6 +88,7 @@ onBeforeUnmount(() => {
 					<transition name = "fade">
 						<span v-if="showP==='B1'"> 
 						<div class = "BDR">
+							<button class = "close" @click="showP = false">close</button>
 							<p>
 							<img src = "./assets/cr_1.png" class = "BDR_1">
 							<br>Crystal Reports report used by management services team to retrieve
@@ -350,7 +352,7 @@ onBeforeUnmount(() => {
 	display: flex;
 	justify-content: center;
 	align-items:center;
-	position: static;
+	transform:translate(-15%, 10%);
 	width: 1100px;
 	height: 400px;
 	border: 2px solid grey;
@@ -362,7 +364,7 @@ onBeforeUnmount(() => {
 	display: flex;
 	justify-content: center;
 	align-items:center;
-	position: static;
+	transform:translate(-30%, 10%);
 	width: 900px;
 	height: 450px;
 	border: 2px solid grey;
@@ -374,7 +376,7 @@ onBeforeUnmount(() => {
 	display: flex;
 	justify-content: center;
 	align-items:center;
-	position: static;
+	transform:translate(-50%, 10%);
 	width: 600px;
 	height: 400px;
 	border: 2px solid grey;
