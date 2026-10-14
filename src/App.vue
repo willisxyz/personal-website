@@ -3,37 +3,7 @@ import { ref, onMounted, onBeforeUnmount } from 'vue';
 
 const show = ref(null);
 const showP = ref(null);
-const showP2 = ref(null);
-const showP3 = ref(null);
-const neet = new Date(2023, 1, 27, 20, 38, 0, 0);
-const imagehover = ref(false);
-const timesince = ref(calculateTime());
 
-
-function calculateTime(){
-  const today = new Date();
-  const neetTotal = today - neet;
-  return neetTotal;
-}
-
-function updateNeet() {
-  timesince.value = calculateTime();
-}
-
-function formatElapsedTime(time) {
-  const seconds = Math.floor(time / 1000) % 60;
-  const minutes = Math.floor(time / (1000 * 60)) % 60;
-  const hours = Math.floor(time / (1000 * 60 * 60)) % 24;
-  const days = Math.floor(time / (1000 * 60 * 60 * 24));
-
-  return `${days} days, ${hours} hours, ${minutes} minutes, and  ${seconds} seconds.`;
-}
-
-function toggle() { 
-  imagehover.value = !imagehover.value;
-}
-
-const intervalID = setInterval(updateNeet, 1000);
 
 function closeSection() {
   show.value = '00'; 
@@ -45,12 +15,6 @@ function handleKeyPress(event) {
   if (showP.value){
 	showP.value = false;
   } 
-  else if (showP2.value){
-  	showP2.value = false;
-  }
-  else if (showP3.value){
-  	showP3.value = false;
-  }
   else{
     closeSection();
   }
@@ -68,12 +32,6 @@ function handleClickOutside(event){
 	if(parseInt(clickTargetZ) < 1){
 	if(showP.value){
 	showP.value= false;
-	}
-	else if(showP2.value){
-		showP2.value=false;
-	}
-	else if(showP3.value){
-		showP3.value=false;
 	}
 	else{
 		closeSection();
@@ -110,43 +68,51 @@ onBeforeUnmount(() => {
 		<div v-if="show==='A'">
 			<div class = projects>
 				<div class = "mouse">
-					<button class = "btn" @click = "showP = !showP">UM Assessments</button>
+					<button class = "btn" @click = "showP = 'A1'">UM Assessments</button>
 					<transition name = "fade">
-						<div v-show="showP" class = "Assessments">
+					<span v-if="showP==='A1'"> 
+						<div class = "Assessments">
 							<p>
-							Screenshots coming soon pending internal approval. <br><br>
+							<img src = "./assets/pbi_1.png" class = "servetrackgif">
+							<img src = "./assets/pbi_2.png" class = "servetrackgif">
 							PowerBI report created to audit staff timeliness, form errors, and other metrics
 							by utilization management team.
 							</p>
 						</div>
+					</span>
 					</transition>
 				</div>
 				<div class = "think">
-					<button class = "btn" @click = "showP2 = !showP2">Batch Details Report</button>
+					<button class = "btn" @click = "showP = 'B1'">Batch Details Report</button>
 					<transition name = "fade">
-						<div v-show="showP2" class = "Assessments">
-							<p>Screenshots coming soon pending internal approval. <br><br>
-							Crystal Reports report used by management services team to retrieve
+						<span v-if="showP==='B1'"> 
+						<div class = "BDR">
+							<p>
+							<img src = "./assets/cr_1.png" class = "BDR_1">
+							<br>Crystal Reports report used by management services team to retrieve
 							organized batch details for export.
 							</p>
 						</div>
+						</span>
 					</transition>
 				</div>
 				<div class = "serveP">
-					<button class = "btn" @click="showP3 = !shodP3">Servetrack</button>
+					<button class = "btn" @click = "showP = 'C1'">servetrack</button>
 					<transition name = "fade">
-						<div v-show="showP3" class = "servetrack">
+					<span v-if="showP==='C1'"> 
+						<div class = "servetrack">
 							<button class = "close" @click="showP = false">close</button>
 							<p>
 							<img src = "./assets/track78.gif" class = "servetrackgif">
 							<a href="https://github.com/wlangley512/servetrack" 
 						    target="_blank" rel = "noopener noreferrer">
-							<img src="./assets/github-mark.png" alt = "repository" width = "24" height = "24"> 
+							<img src="./assets/github-mark.png" alt = "repository" width = "24" height = "24">
 							</a>
 							Servetrack is an object tracking script that utilizes the Python 
 							library OpenCV to track and anaylyze a volleyball serve. Coded back in 2023 with very minimal AI assisstance.
 							</p>
 						</div>
+						</span>
 					</transition>
 				</div>
 				<div class = "vb">
@@ -197,7 +163,8 @@ onBeforeUnmount(() => {
 	</div>
 </div>
 <Transition name="dark" mode="in-out">
-	<div v-if="show==='A' || show==='B' || show==='C' || show === 'D'" @click="closeSection">
+	<div v-if="show==='A' || show==='B' || show==='C' || show === 'D' || showP === 'A1'
+		|| showP === 'B1'" @click="closeSection">
 		<div class = "dim"></div>
 	</div>
 </Transition>
@@ -377,32 +344,37 @@ onBeforeUnmount(() => {
 	background: rgb(255, 245, 230, 1);
 	border: 2px solid grey;
 }
-
 .Assessments{
 	z-index: 3;
-	display: flex;
 	font-family: Roboto;
+	display: flex;
 	justify-content: center;
 	align-items:center;
-	transform:translate(-50%, -50%);
-	top:42%;
-	left:50%;
-	position: fixed;
-	width: 600px;
+	position: static;
+	width: 1100px;
 	height: 400px;
+	border: 2px solid grey;
+	background: rgb(255,245,230,1);
+}
+.BDR{
+	z-index: 3;
+	font-family: Roboto;
+	display: flex;
+	justify-content: center;
+	align-items:center;
+	position: static;
+	width: 900px;
+	height: 450px;
 	border: 2px solid grey;
 	background: rgb(255,245,230,1);
 }
 .servetrack{
 	z-index: 3;
-	display: flex;
 	font-family: Roboto;
+	display: flex;
 	justify-content: center;
 	align-items:center;
-	transform:translate(-50%, -50%);
-	top:42%;
-	left:50%;
-	position: fixed;
+	position: static;
 	width: 600px;
 	height: 400px;
 	border: 2px solid grey;
@@ -414,6 +386,13 @@ onBeforeUnmount(() => {
 	margin: 10px;
 	height:306px;
 	width:513px;
+}
+.BDR_1{
+	z-index: 5;
+	border: 2px solid grey;
+	margin: 10px;
+	height:358px;
+	width:736px;
 }
 .contact{
 	font-family:Roboto;
